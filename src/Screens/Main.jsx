@@ -27,9 +27,11 @@ function Main() {
               </div>
               <input type="file" onChange={(e) => showFile(e)} />
             </div>
-            <div className="w-full mt-8 p-2  items-stretch border-2 rounded border-gray-900">
-              {text}
-            </div>
+            {text && (
+              <div className="w-full mt-8 p-2 items-stretch border-2 rounded border-gray-900">
+                {text}
+              </div>
+            )}
           </div>
         </div>
       </div>
