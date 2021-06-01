@@ -33,8 +33,8 @@ function Main() {
   
   const handleRegexOperationB = (e) => {
     const logText = e.target.result;
-    const regex = /(.+?) (.+?) (.+?) (.+?) (.+?) (.+?) (.+?) (.+?) (.+?)(?: (.+))?$/gm
-    const result = logText.replace(regex, `COMMAND: $1 PID: $2 USER: $3 FD: $4 TYPE: $5 DEVICE: $6 SIZE/OFF: $7 NODE:$8 NAME: $9 $10`)
+    const regex = /(.+?) (\d.+?) (.+)$/gm
+    const result = logText.replace(regex, `MATRÍCULA: $2 | COLABOROU: $3 | NOME: $1`)
 
     setTextB(result)
   }
