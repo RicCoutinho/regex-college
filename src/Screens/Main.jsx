@@ -11,13 +11,14 @@ function Main() {
     reader.onload = async (e) => { 
       handleRegexOperationA(e)
     };
-    reader.readAsText(e.target.files[0])  
+    reader.readAsText(e.target.files[0])
+    e.target.value = ""
   }
   
   const handleRegexOperationA = (e) => {
     const logText = e.target.result;
     const regex = /(.+?) (.+?) (.+?) (.+?) (.+?) (.+?) (.+?) (.+?) (.+?)(?: (.+))?$/gm
-    const result = logText.replace(regex, `COMMAND: $1 PID: $2 USER: $3 FD: $4 TYPE: $5 DEVICE: $6 SIZE/OFF: $7 NODE:$8 NAME: $9 $10`)
+    const result = logText.replace(regex, `COMMAND: $1\nPID: $2\nUSER: $3\nFD: $4\nTYPE: $5\nDEVICE: $6\nSIZE/OFF: $7\nNODE:$8\nNAME: $9 $10\n---------`)
 
     setText(result)
   }
@@ -28,7 +29,8 @@ function Main() {
     reader.onload = async (e) => { 
       handleRegexOperationB(e)
     };
-    reader.readAsText(e.target.files[0])  
+    reader.readAsText(e.target.files[0])
+    e.target.value = ""
   }
   
   const handleRegexOperationB = (e) => {
@@ -41,15 +43,17 @@ function Main() {
 
   const handleValueChange = (value) => {
     if(value === 'Sistema'){
+      setTextB("")
       setIsSystem(true)
     }else{
+      setText("")
       setIsSystem(false)
     }
   }
 
   return (
     <React.Fragment>
-      <div className="flex-col h-full w-full bg-gray-200 text-gray-700 py-2">
+      <div className="flex bg-gray-200 flex-col min-h-screen w-full text-gray-700 py-2 pb-8">
         <div className="flex justify-center">
           <h1 className="text-6xl font-thin tracking-wider">Regex Operator</h1>
         </div>
